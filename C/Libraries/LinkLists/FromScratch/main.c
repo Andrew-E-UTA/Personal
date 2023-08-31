@@ -4,9 +4,9 @@
 #include "ll.h"
 #include "flib.h"
 
-#define INSERT 1
-#define PRINT 2
-#define POP 3
+#define INSERT 2
+#define PRINT 1
+#define DEL 3
 #define SAVE 4
 #define EXIT 5
 
@@ -17,8 +17,8 @@ int main(int argc, char *argv[]){
 	Head->next = NULL;
 
 
-	int input = PRINT;
-	int data = 0;
+	int input = PRINT, data = 0, destination = 0;
+	char delInput[3];
 	char fileName[FILENAMEMAX];
 	FILE* saveFile = NULL;
 
@@ -26,16 +26,21 @@ int main(int argc, char *argv[]){
 
 		switch(input){
 			case INSERT:
-				printf("Enter value: ");
+				printf("Enter data of new node: ");
 				scanf("%d", &data);
-				insert(Head, data);
+				printf("\n\nEnter value of node to insert behind, or 0 for the end of the list.\n");
+				scanf("%d", &destination);
+
+				if(destination == 0) insert(Head, data);
+				else insertBehind(Head, destination, data);
 				break;
 			case PRINT:
 				print(Head);
 				printf("\n");
 				break;
-			case POP:
-				pop(Head);
+			case DEL:
+				printf("Enter value of node to delete it, or type \"p\" to delete last entry.");
+				scanf("%s", delInput);
 				break;
 			case SAVE:
 				printf("Enter name for SaveFile: ");
@@ -46,10 +51,10 @@ int main(int argc, char *argv[]){
 		}
 
 		printf("Enter Command:\n");
-		printf("1) Insert\n2)Print\n3)Pop\n4)Save\n5)Exit\n");
+		printf("1)Print\n2)Insert\n3)Delete\n4)Save\n5)Exit\n");
 		scanf("%d", &input);
 	}
-
-
-return 0;
+	if(input == EXIT)
+		cleanup(Head);
+	return 0;
 }

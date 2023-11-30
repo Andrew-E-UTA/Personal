@@ -179,6 +179,7 @@ void Game::sLifespan()
 }
 void Game::sEnemySpawner()
 {
+    std::cout << "Attempting to spawn Enemy" << std::endl;
 	if (m_currentFrame - m_lastEnemySpawnTime >= 60)
 	{
 		if (m_entities.getEntityCount("Enemy") <= 15)

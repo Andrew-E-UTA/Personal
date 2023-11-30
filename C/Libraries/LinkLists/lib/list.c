@@ -30,4 +30,20 @@ void PrintList(const List* list)
         printf("Node[%d]:\n\tValue: %d\n\tNext: %p\n"
                 , n, curr->val, curr->next);
     }
-}   
+}  
+
+int push(List* list, int val)
+{
+    Node* newNode = NULL;
+
+    newNode = calloc(1, sizeof(Node));
+    if(!newNode) return 0;
+
+    newNode->val = val;
+    newNode->next = NULL;
+
+    list->last->next = newNode;
+
+
+    return 1;
+}

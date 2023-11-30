@@ -1,4 +1,0 @@
-Node: 0 @ 0x55956294d2a0 | Next: 0x55956294dae0
-Node: 2 @ 0x55956294dae0 | Next: 0x55956294db00
-Node: 3 @ 0x55956294db00 | Next: 0x55956294db20
-Node: 4 @ 0x55956294db20 | Next: (nil)

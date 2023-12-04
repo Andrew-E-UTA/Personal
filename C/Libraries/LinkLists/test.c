@@ -23,6 +23,9 @@ int main(int argc, char* argv[])
         perror("error: could not initialize list ...\n");
         return FAILURE;
     }
+
+    for(int i = 1; i <= 10; i++)
+        push(myList, i);
     PrintList(myList);
 
     return SUCCESS;

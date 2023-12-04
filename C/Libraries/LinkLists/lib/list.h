@@ -35,3 +35,8 @@ List* NewList();
  *Description: Self Explanitory
  */
 void PrintList(const List* list);
+
+/*
+ *Description: This will append a node with value 'val' to the end of the linked list.
+ */
+int push(List* list, int val);

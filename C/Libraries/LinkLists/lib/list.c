@@ -48,3 +48,20 @@ int push(List* list, int val)
     list->len++;
     return 1;
 }
+
+void FreeList(List* list)
+{
+    if(!list || !list->root)
+        return;
+    Node* curr = list->root;
+    Node* temp  = curr->next;
+    while(!curr)
+    {
+        curr->val = -1;
+        free(curr);
+        curr = temp;
+        if(!temp->next)
+            temp = temp->next;
+        
+    }
+}

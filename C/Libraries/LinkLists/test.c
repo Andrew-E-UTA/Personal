@@ -28,6 +28,9 @@ int main(int argc, char* argv[])
         push(myList, i);
     PrintList(myList);
 
+    FreeList(myList);
+    PrintList(myList);
+
     return SUCCESS;
 }
 

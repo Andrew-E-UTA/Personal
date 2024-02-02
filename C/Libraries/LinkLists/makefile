@@ -8,9 +8,9 @@ OBJS = $(SRC:.c=.o) $(LIB:.c=.o)
 EXE = $(SRC:.c=)
 
 
-CFLAGS = -Wall
+CFLAGS = -Wall -pedantic
 
-DFALGS = -g
+DFLAGS = -g
 
 
 all : $(EXE) clean

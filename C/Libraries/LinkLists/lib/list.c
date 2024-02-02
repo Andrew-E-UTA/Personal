@@ -28,7 +28,7 @@ void PrintList(const List* list)
     for(int n = 0; n < list->len; n++)
     {
         printf("Node[%d]:\n\tValue: %d\n\tNext: %p\n"
-                , n, curr->val, curr->next);
+                , n, curr->val, (void*)curr->next);
         curr = curr->next;
     }
 }  
@@ -49,6 +49,30 @@ int push(List* list, int val)
     return 1;
 }
 
+int pop(List* list)
+{
+    if(!list) return -1;
+    if(!list->root) return 1;
+    Node* curr = list->root;
+    Node* prev = NULL;
+    int val = -1;
+    while(curr->next)
+    {
+        prev = curr;
+        curr = curr->next;
+    }
+    prev->next = NULL;
+    val = curr->val;
+    free(curr);
+    list->last = prev;
+    list->len--;
+    return val;
+}
+
+void rem(List* list, int val)
+{
+    
+}
 void FreeList(List* list)
 {
     if(!list || !list->root)
@@ -64,4 +88,19 @@ void FreeList(List* list)
             temp = temp->next;
         
     }
+}
+
+Node* isInList(List* list, int val)
+{
+    if(!list) return NULL;
+    if(!list->root) return NULL;
+
+    Node* curr = list->root;
+    while(curr)
+    {
+        if(curr->val == val)
+            return curr;        
+        curr = curr->next;
+    }
+    return NULL;
 }

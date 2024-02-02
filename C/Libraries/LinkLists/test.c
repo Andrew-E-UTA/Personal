@@ -26,11 +26,14 @@ int main(int argc, char* argv[])
 
     for(int i = 1; i <= 10; i++)
         push(myList, i);
-    PrintList(myList);
 
-    FreeList(myList);
-    PrintList(myList);
+    printf("Value at end: %d\n-----------------\n-", pop(myList));
 
+    PrintList(myList);
+   
+    if(!isInList(myList, 9))
+        printf("This Value is not in the list...\n");
+    
     return SUCCESS;
 }
 
